@@ -94,6 +94,37 @@
   .scene .hud{position:absolute;left:1rem;bottom:.9rem;right:1rem;display:flex;justify-content:space-between;font-size:.82rem;color:var(--darkInk2);pointer-events:none}
   .scene .hud b{color:var(--darkInk);font-weight:600}
   .scene .hud .ttc{font-family:"Newsreader",serif;font-size:1.3rem;color:var(--amber)}
+
+  /* three lenses */
+  .lenses{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+  .lens{margin:0;border:1px solid var(--darkLine);border-radius:6px;overflow:hidden;background:#1A2029;opacity:.6;transition:opacity .4s,box-shadow .4s,border-color .4s}
+  .lens.on{opacity:1}
+  .lens.d1.on{border-color:#5B8DEF;box-shadow:0 0 0 1px #5B8DEF33,0 12px 30px rgba(0,0,0,.35)}
+  .lens.d2.on{border-color:#4FC3A1;box-shadow:0 0 0 1px #4FC3A133,0 12px 30px rgba(0,0,0,.35)}
+  .lens.d3.on{border-color:var(--amber);box-shadow:0 0 0 1px #F0B32333,0 12px 30px rgba(0,0,0,.35)}
+  .lens figcaption{padding:.6rem .8rem;font-size:.9rem;font-weight:600;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;border-bottom:1px solid var(--darkLine)}
+  .lens figcaption small{font-weight:400;color:var(--darkInk2);font-size:.78rem;width:100%}
+  .lens .tag{font-size:.68rem;font-weight:600;padding:.12rem .45rem;border-radius:2px;border:1px solid}
+  .lens.d1 .tag{border-color:#5B8DEF;color:#9BBAF6}.lens.d2 .tag{border-color:#4FC3A1;color:#9BE3CB}.lens.d3 .tag{border-color:var(--amber);color:var(--amber)}
+  .lens .view{position:relative;aspect-ratio:4/3;background:#161B22}
+  .lens .view canvas{display:block;width:100%;height:100%}
+  .lens .hud{position:absolute;left:.7rem;right:.7rem;bottom:.55rem;display:flex;justify-content:space-between;gap:.6rem;font-size:.8rem;pointer-events:none}
+  .lens .hud .hl{font-weight:600;color:#F3F4F6}.lens .hud .hr{color:#A3ACB8;text-align:right}
+  .lens .risk{position:absolute;left:.7rem;top:.6rem;right:.7rem;pointer-events:none}
+  .lens .risk i{display:block;height:6px;border-radius:3px;background:#3A4351;position:relative;overflow:hidden}
+  .lens .risk i::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--w,0%);background:var(--amber);transition:width .1s linear}
+  .lens .risk i::before{content:"";position:absolute;left:65%;top:-3px;bottom:-3px;width:2px;background:#fff;z-index:1}
+  .lens .risk b{display:block;margin-top:.3rem;font-size:.78rem;color:var(--amber);font-weight:600}
+  .axis{position:relative;height:74px;margin:1.6rem 0 0}
+  .axis .line{position:absolute;left:0;right:0;top:30px;height:2px;background:var(--darkLine)}
+  .axis .seg{position:absolute;top:26px;height:10px;border-radius:5px;opacity:.28}
+  .axis .s1{background:#5B8DEF}.axis .s2{background:#4FC3A1}.axis .s3{background:var(--amber)}
+  .axis .ticks span{position:absolute;top:44px;transform:translateX(-50%);font-size:.78rem;color:var(--darkInk2);white-space:nowrap}
+  .axis .ticks span:first-child{transform:none}.axis .ticks span:last-child{transform:translateX(-100%)}
+  .axis .cursor{position:absolute;top:14px;width:2px;height:34px;background:var(--amber);transform:translateX(-1px)}
+  .axis .cursor b{position:absolute;top:-22px;left:50%;transform:translateX(-50%);font-family:"Newsreader",serif;font-weight:500;font-size:1.05rem;color:var(--amber);white-space:nowrap}
+  @media (max-width:900px){.lenses{grid-template-columns:1fr}}
+
   /* timeline */
   .tl{margin:4rem 0 0;padding:2.6rem 0 3rem;position:relative}
   .tl::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--darkLine)}
@@ -216,17 +247,19 @@
       <div class="scene" id="scene3d" aria-label="3D animation: a pedestrian starts crossing, stops and steps back while the approaching car brakes"><canvas id="c3d"></canvas><div class="hud"><span id="hud-ped"><b>Pedestrian</b> walks in</span><span class="ttc" id="hud-ttc"></span><span id="hud-car"><b>Car</b> constant speed</span></div></div>
     </div>
 
-    <div class="tl" aria-label="Pre-crash timeline">
-      <div class="tl-cap"><span><b>What happens in the last two seconds,</b> and which direction of our work covers it</span><span>time to collision →</span></div>
-      <ol class="track">
-        <li class="ev d1"><span class="tag">Behavior</span><div class="t">Pedestrian sees the car</div><div class="dot"></div><div class="time">2.0 s</div><div class="s">decides in 0.17–0.24 s if they will avoid it</div></li>
-        <li class="ev d1"><span class="tag">Behavior</span><div class="t">Runs, stops, or steps back</div><div class="dot"></div><div class="time">1.5 s</div><div class="s">execution takes 1.5–1.8 s</div></li>
-        <li class="ev d2"><span class="tag">Modeling</span><div class="t">A digital pedestrian does the same</div><div class="dot"></div><div class="time">1.0 s</div><div class="s">so AVs can be tested against real reactions</div></li>
-        <li class="ev d3"><span class="tag">Safety system</span><div class="t">Integrated protection triggers</div><div class="dot"></div><div class="time">0.5 s</div><div class="s">−59% probability of severe head injury</div></li>
-        <li class="ev d3"><span class="tag">Safety system</span><div class="t">Active hood deploys</div><div class="dot"></div><div class="time">−0.2 s</div><div class="s">predicted from motion, not from contact</div></li>
-        <li class="ev d3 impact"><span class="tag">Safety system</span><div class="t">Impact</div><div class="dot"></div><div class="time">0</div><div class="s">head contact 60–120 ms later, on a deployed hood</div></li>
-      </ol>
-      <div class="legend"><span class="l1">Direction 1 · Behavior &amp; interaction</span><span class="l2">Direction 2 · Realistic road-user models</span><span class="l3">Direction 3 · AI-driven integrated safety</span></div>
+    <div class="tl" aria-label="The same two seconds, seen through the three research directions">
+      <div class="tl-cap"><span><b>What happens in the last two seconds,</b> and which direction of our work covers it</span><span>same conflict · same clock · three lenses</span></div>
+      <div class="lenses">
+        <figure class="lens d1" id="lens1"><figcaption><span class="tag">Direction 1</span> Behavior &amp; interaction <small>what the person does, and when it is too late</small></figcaption><div class="view"><canvas></canvas><div class="hud"><span class="hl"></span><span class="hr"></span></div></div></figure>
+        <figure class="lens d2" id="lens2"><figcaption><span class="tag">Direction 2</span> Realistic road-user models <small>what our pedestrian model predicts for the same person</small></figcaption><div class="view"><canvas></canvas><div class="hud"><span class="hl"></span><span class="hr"></span></div></div></figure>
+        <figure class="lens d3" id="lens3"><figcaption><span class="tag">Direction 3</span> AI-driven integrated safety <small>what the vehicle does, before and after impact</small></figcaption><div class="view"><canvas></canvas><div class="risk"><i></i><b></b></div><div class="hud"><span class="hl"></span><span class="hr"></span></div></div></figure>
+      </div>
+      <div class="axis" id="axis">
+        <div class="seg s1" style="left:0%;width:44%"></div><div class="seg s2" style="left:20%;width:40%"></div><div class="seg s3" style="left:56%;width:44%"></div>
+        <div class="line"></div>
+        <div class="ticks"><span style="left:0%">TTC 2.0 s</span><span style="left:20%">1.5 s</span><span style="left:40%">1.0 s</span><span style="left:60%">0.5 s</span><span style="left:80%">impact</span><span style="left:100%">+0.5 s</span></div>
+        <div class="cursor" id="cursor"><b id="cur-t">2.0 s</b></div>
+      </div>
     </div>
   </div>
 </section>
@@ -456,6 +489,131 @@ lb.addEventListener("click",closeLb);document.addEventListener("keydown",e=>{if(
   addEventListener("resize",resize);resize();
   const t0=performance.now();
   function loop(){const t=reduce?tStop+.1:((performance.now()-t0)/1000)%T;frame(t);R.render(S,cam);if(!reduce)requestAnimationFrame(loop)}
+  loop();
+})();
+</script>
+
+<script>
+(function(){
+  // ---------- three synchronized 3D lenses: a collision case ----------
+  const boxes=[1,2,3].map(i=>document.getElementById("lens"+i));
+  if(!window.THREE||!boxes[0].querySelector("canvas").getContext("webgl")){boxes.forEach(b=>b.querySelector(".view").innerHTML='<p style="padding:1rem;color:#A3ACB8">3D view needs WebGL.</p>');return}
+  const CAR_Z=1.9,V0=8,A=6,TB=.5;                     // lane, cruise speed, brake decel, brake starts at TTC 0.5
+  const tauImp=(V0-Math.sqrt(V0*V0-2*A*V0*TB))/A;    // solve -V0*TB + V0*tau - A*tau^2/2 = 0  -> impact after braking starts
+  const vImp=V0-A*tauImp, tStopAfter=vImp/A;
+  const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.85,metalness:.05},o));
+  function build(mode){
+    const S=new THREE.Scene();S.background=new THREE.Color(0x161B22);S.fog=new THREE.Fog(0x161B22,18,40);
+    const add=(g,m,p,r,parent=S,sh=true)=>{const o=new THREE.Mesh(g,m);o.position.set(...p);if(r)o.rotation.set(...r);o.castShadow=sh;o.receiveShadow=true;parent.add(o);return o};
+    S.add(new THREE.HemisphereLight(0xBFC8D6,0x1A2029,.8));
+    const sun=new THREE.DirectionalLight(0xFFF4E0,1.0);sun.position.set(-6,12,8);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-16,right:12,top:12,bottom:-12,near:1,far:40});S.add(sun);
+    add(new THREE.PlaneGeometry(80,80),M(0x1E252F),[0,-.01,0],[-Math.PI/2,0,0],S,false);
+    add(new THREE.PlaneGeometry(80,8),M(0x2B3441,{roughness:1}),[-10,0,0],[-Math.PI/2,0,0],S,false);
+    const sw=M(0x3A4351);add(new THREE.BoxGeometry(80,.25,4),sw,[-10,.12,6]);add(new THREE.BoxGeometry(80,.25,4),sw,[-10,.12,-6]);
+    const dash=M(0xC9CFD8,{emissive:0x333333});for(let x=-40;x<12;x+=3)add(new THREE.PlaneGeometry(1.6,.14),dash,[x,.01,0],[-Math.PI/2,0,0],S,false);
+    const zeb=M(0xE6E9EE,{emissive:0x222222});for(let z=-3.4;z<=3.4;z+=1.1)add(new THREE.PlaneGeometry(2.6,.6),zeb,[0,.012,z],[-Math.PI/2,0,0],S,false);
+    const bm=M(0x232B36);[[-14,-11,6,5],[-6,-12,5,7],[3,-11,5,4],[-24,-12,8,3]].forEach(([x,z,w,hh])=>add(new THREE.BoxGeometry(w,hh,4),bm,[x,hh/2,z]));
+    // car with a separate hood that lifts at its rear edge
+    const car=new THREE.Group();S.add(car);
+    const body=M(0xE6E9EE,{roughness:.35,metalness:.3});
+    add(new THREE.BoxGeometry(4.4,.72,1.9),body,[0,.62,0],null,car);                 // lower body
+    add(new THREE.BoxGeometry(2.0,.9,1.9),body,[-1.2,1.05,0],null,car);              // rear deck / engine bay walls
+    add(new THREE.BoxGeometry(2.2,.75,1.7),M(0x2A3340,{roughness:.2,metalness:.5}),[-.6,1.55,0],null,car); // cabin
+    add(new THREE.BoxGeometry(2.2,.35,1.75),M(0x1A2029),[1.1,1.0,0],null,car);      // engine bay (dark, seen when hood lifts)
+    const hoodP=new THREE.Group();hoodP.position.set(2.15,1.16,0);car.add(hoodP);    // pivot at front edge
+    const hood=add(new THREE.BoxGeometry(2.1,.12,1.82),M(0xDDE2E8,{roughness:.35,metalness:.3}),[-1.05,0,0],null,hoodP);
+    const wheel=new THREE.CylinderGeometry(.42,.42,.35,20),wm=M(0x0F1318,{roughness:.9});
+    [[1.5,.42,.95],[1.5,.42,-.95],[-1.5,.42,.95],[-1.5,.42,-.95]].forEach(p=>add(wheel,wm,p,[Math.PI/2,0,0],car));
+    const hl=M(0xFFF6D0,{emissive:0xFFF0B0,emissiveIntensity:1.2});add(new THREE.BoxGeometry(.1,.26,.42),hl,[2.2,.72,.6],null,car,false);add(new THREE.BoxGeometry(.1,.26,.42),hl,[2.2,.72,-.6],null,car,false);
+    const tl=M(0x5A0F0F,{emissive:0xFF2A2A,emissiveIntensity:0});add(new THREE.BoxGeometry(.1,.26,.5),tl,[-2.2,.8,.62],null,car,false);add(new THREE.BoxGeometry(.1,.26,.5),tl,[-2.2,.8,-.62],null,car,false);
+    const bl=new THREE.PointLight(0xFF2A2A,0,6);bl.position.set(-2.6,.8,0);car.add(bl);
+    car.position.z=CAR_Z;
+    // pedestrian
+    const wire=false;
+    const skin=M(0xF1D3B8,wire?{wireframe:true,color:0x4FC3A1}:{}),shirt=M(0x5B8DEF,wire?{wireframe:true,color:0x4FC3A1}:{}),pants=M(0x2E3A4F,wire?{wireframe:true,color:0x4FC3A1}:{});
+    const ped=new THREE.Group();S.add(ped);const bodyG=new THREE.Group();bodyG.position.y=.9;ped.add(bodyG);   // bodyG pivots at the hips after impact
+    add(new THREE.BoxGeometry(.5,.7,.28),shirt,[0,.35,0],null,bodyG);const headM=add(new THREE.SphereGeometry(.2,20,16),skin,[0,.9,0],null,bodyG);
+    const lL=new THREE.Group(),lR=new THREE.Group(),aL=new THREE.Group(),aR=new THREE.Group();
+    lL.position.set(0,0,.13);lR.position.set(0,0,-.13);aL.position.set(0,.65,.33);aR.position.set(0,.65,-.33);
+    add(new THREE.BoxGeometry(.2,.9,.2),pants,[0,-.45,0],null,lL);add(new THREE.BoxGeometry(.2,.9,.2),pants,[0,-.45,0],null,lR);
+    add(new THREE.BoxGeometry(.14,.62,.14),shirt,[0,-.3,0],null,aL);add(new THREE.BoxGeometry(.14,.62,.14),shirt,[0,-.3,0],null,aR);
+    bodyG.add(lL,lR,aL,aR);
+    // overlays
+    const cone=new THREE.Mesh(new THREE.ConeGeometry(2.2,7,24,1,true),new THREE.MeshBasicMaterial({color:0x5B8DEF,transparent:true,opacity:.14,side:THREE.DoubleSide,depthWrite:false}));cone.rotation.x=Math.PI/2;cone.position.z=-3.5;
+    const coneG=new THREE.Group();coneG.add(cone);coneG.visible=false;S.add(coneG);
+    const ring=new THREE.Mesh(new THREE.RingGeometry(.6,.68,40),new THREE.MeshBasicMaterial({color:0x5B8DEF,transparent:true,opacity:0,side:THREE.DoubleSide}));ring.rotation.x=-Math.PI/2;ring.position.y=.02;S.add(ring);
+    const trail=new THREE.Group();S.add(trail);
+    const paths=[];if(mode===2){[[0,0,-3.2],[0,0,0],[0,0,3.2]].forEach(e=>{const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,.03,0),new THREE.Vector3(...e)]);const l=new THREE.Line(g,new THREE.LineDashedMaterial({color:0x4FC3A1,dashSize:.25,gapSize:.15,transparent:true,opacity:.9}));l.computeLineDistances();S.add(l);paths.push(l)});}
+    const cam=new THREE.PerspectiveCamera(mode===2?34:42,4/3,.1,100);
+    return {S,cam,car,hoodP,hood,tl,bl,wheel,ped,bodyG,headM,lL,lR,aL,aR,coneG,ring,trail,paths,mode};
+  }
+  const L=[1,2,3].map(m=>{const o=build(m);const cv=boxes[m-1].querySelector("canvas");o.R=new THREE.WebGLRenderer({canvas:cv,antialias:true});o.R.setPixelRatio(Math.min(devicePixelRatio,1.5));o.R.shadowMap.enabled=true;o.R.shadowMap.type=THREE.PCFSoftShadowMap;
+    o.hl=boxes[m-1].querySelector(".hl");o.hr=boxes[m-1].querySelector(".hr");o.risk=boxes[m-1].querySelector(".risk");return o});
+  const cur=document.getElementById("cursor"),curT=document.getElementById("cur-t");
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),lerp=(a,b,u)=>a+(b-a)*clamp(u,0,1),eio=u=>u<.5?2*u*u:1-Math.pow(-2*u+2,2)/2,eo=u=>1-Math.pow(1-clamp(u,0,1),3);
+  const T=8.5;                 // loop: 0.6 s lead-in, TTC 2.0 -> 0 over 4.4 s (slowed 2.2x), post-impact 0.6 s scaled, hold
+  const SLOW=2.2;
+  let trailPts=[];
+  function state(t){
+    const s=(t-.6)/SLOW;                    // scaled "real" seconds since TTC 2.0
+    const ttcN=2.0-s;                       // nominal (unbraked) TTC
+    // car: x of front bumper relative to crossing point (pedestrian at x=0)
+    let front,v,brake=false,tau=0,post=-1;
+    if(s<=0){front=-V0*2.0+V0*Math.max(s,-.6)*0;front=-V0*(2.0-Math.max(s,-.6));v=V0}
+    else if(ttcN>TB){front=-V0*ttcN;v=V0}
+    else{tau=Math.min(s-(2.0-TB),tauImp+tStopAfter);front=-V0*TB+V0*tau-A*tau*tau/2;v=Math.max(0,V0-A*tau);brake=true;if(tau>=tauImp)post=tau-tauImp}
+    const hoodUp=brake&&tau>=tauImp-.2;
+    // pedestrian: walks in unaware, perceives at TTC 1.0, decides 0.17 s later, tries to step back, too late
+    let pz,walk=false,dir=0;
+    if(s<0){pz=5.4+ s*0;pz=5.4;walk=true;dir=1}
+    else if(ttcN>1.2){pz=lerp(5.4,CAR_Z,s/.8);walk=true;dir=1}
+    else if(ttcN>.83){pz=CAR_Z}
+    else if(post<0){pz=lerp(CAR_Z,CAR_Z+.55,eio((.83-ttcN)/.83));walk=true;dir=-1}
+    else pz=CAR_Z+.55;
+    return {s,ttcN,front,v,brake,tau,post,hoodUp,pz,walk,dir};
+  }
+  function apply(o,st,t){
+    const {S,cam,car,hoodP,tl,bl,wheel,ped,bodyG,headM,lL,lR,aL,aR,coneG,ring,trail,paths,mode}=o;
+    car.position.x=st.front-2.2;                          // group origin is car center; front bumper = +2.2
+    tl.emissiveIntensity=st.brake?2.2:0;bl.intensity=st.brake?1.6:0;
+    hoodP.rotation.z=st.hoodUp?-.3:0;                    // rear edge lifts ~0.45 m
+    car.children.forEach(c=>{if(c.geometry===wheel)c.rotation.y=(st.front+40)*2.4});
+    // pedestrian
+    const sw=st.walk?Math.sin(t*11)*.55:0;lL.rotation.z=sw;lR.rotation.z=-sw;aL.rotation.z=-sw*.8;aR.rotation.z=sw*.8;
+    if(st.post<0){ped.position.set(0,st.walk?Math.abs(Math.sin(t*11))*.04:0,st.pz);ped.rotation.y=st.dir>=0?-Math.PI/2:Math.PI/2;bodyG.rotation.set(0,0,0);bodyG.position.set(0,.9,0)}
+    else{ // impact: hips carried by the bumper, legs swept up, torso wraps back over the raised hood, head lands on it
+      const u=clamp(st.post/.32,0,1),e=eo(u);
+      ped.position.set(st.front+.05-e*.45,0,st.pz);ped.rotation.y=0;
+      bodyG.position.set(0,.9+e*.5,0);bodyG.rotation.z=e*1.45;
+      lL.rotation.z=-e*1.1;lR.rotation.z=-e*1.5;aL.rotation.z=e*1.3;aR.rotation.z=e*1.6;
+    }
+    // overlays
+    const seen=st.ttcN<=1.0&&st.post<0;coneG.visible=mode===1&&seen&&st.ttcN>.6;
+    if(coneG.visible){coneG.position.set(ped.position.x,1.8,ped.position.z);coneG.lookAt(car.position.x+2.2,1,CAR_Z)}
+    const dec=st.ttcN<=.83&&st.ttcN>.55;ring.material.opacity=mode===1&&dec?(1-(.83-st.ttcN)/.28)*.9:0;const rs=1+(dec?(.83-st.ttcN)/.28*2.5:0);ring.scale.set(rs,rs,rs);ring.position.set(ped.position.x,.02,ped.position.z);
+    if(mode===1){if(st.walk&&st.post<0&&Math.floor(t*24)%2===0){trailPts.push([ped.position.x,ped.position.z]);if(trailPts.length>16)trailPts.shift()}if(t<.05)trailPts=[];
+      while(trail.children.length)trail.remove(trail.children[0]);trailPts.forEach((p,i)=>{const d=new THREE.Mesh(new THREE.SphereGeometry(.05,8,6),new THREE.MeshBasicMaterial({color:0x5B8DEF,transparent:true,opacity:.15+.6*i/trailPts.length}));d.position.set(p[0],.05,p[1]);trail.add(d)})}
+    if(mode===2){const pf=st.ttcN>1.2?[.42,.2,.38]:st.ttcN>.83?[.1,.55,.35]:[.02,.08,.9];paths.forEach((l,i)=>{l.position.set(ped.position.x,0,ped.position.z);l.material.opacity=.15+pf[i]*.85;l.visible=st.post<0})}
+    // cameras
+    const px=ped.position.x;
+    if(mode===1){cam.position.set(px+6,2.8,7.2);cam.lookAt(px-3.5,.8,st.pz-.6)}
+    else if(mode===2){cam.position.set(px+3.2,4.6,7.2);cam.lookAt(px-1,.6,st.pz-.8)}
+    else{const cx=car.position.x;cam.position.set(cx-6.2,4.2,CAR_Z+3.4);cam.lookAt(cx+3.5,1.0,CAR_Z-.3)}
+    // HUD
+    const n=st.ttcN;
+    if(mode===1){o.hl.textContent=st.post>=0?"impact at half speed":n>1.0?"walking, looking away":n>.83?"perceives the car, decides in 0.17 s":"steps back, but too late";o.hr.textContent=st.post>=0?"":st.walk?(st.dir>0?"v = +1.4 m/s":"v = −1.0 m/s"):"v = 0"}
+    if(mode===2){o.hl.textContent=st.post>=0?"collision predicted 0.4 s early":n>1.2?"model: normal walking":n>.83?"risk perceived · fwd/stop/back":"back predicted · fwd/stop/back";o.hr.textContent=st.post>=0?"":(n>1.2?"42 · 20 · 38 %":n>.83?"10 · 55 · 35 %":"2 · 8 · 90 %")}
+    if(mode===3){const risk=clamp((2.0-n)/1.5,0,1);o.risk.querySelector("i").style.setProperty("--w",(risk*100).toFixed(0)+"%");o.risk.querySelector("b").textContent=st.post>=0?"impact at "+(vImp*3.6*1.35).toFixed(0)+" km/h, hood already up":"TTC "+Math.max(0,n).toFixed(1)+" s · risk "+(risk*100).toFixed(0)+"%";
+      o.hl.textContent=st.post>=0?(st.v>0?"head on raised hood":"stopped"):st.hoodUp?"hood deployed 200 ms early":st.brake?"brakes · lights on":"tracking pedestrian";o.hr.textContent=st.post>=0?"HIC −62%":st.brake?"cannot stop in time":"threshold TTC 0.5 s"}
+    boxes[mode-1].classList.toggle("on",mode===1?(n>1.0||t<.6):mode===2?(n<=1.6&&n>.4):(n<=.6));
+    // render
+    const cv=o.R.domElement,w=cv.clientWidth,hh=cv.clientHeight;if(cv.width!==Math.floor(w*o.R.getPixelRatio())){o.R.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix()}
+    o.R.render(S,cam);
+  }
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches,t0=performance.now();
+  function loop(){const t=window.__lensT!=null?window.__lensT:(reduce?5.6:((performance.now()-t0)/1000)%T);const st=state(t);L.forEach(o=>apply(o,st,t));
+    const n=st.ttcN,pos=st.post>=0?80+clamp(st.post/.5,0,1)*20:clamp((2.0-n)/2.0,0,1)*80;cur.style.left=pos+"%";curT.textContent=st.post>=0?"+"+st.post.toFixed(1)+" s":Math.max(0,n).toFixed(1)+" s";
+    if(!reduce)requestAnimationFrame(loop)}
   loop();
 })();
 </script>
