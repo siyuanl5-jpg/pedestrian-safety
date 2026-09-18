@@ -252,7 +252,7 @@
       <div class="lenses">
         <figure class="lens d1" id="lens1"><figcaption><span class="tag">Direction 1</span> Behavior Analysis <small>What do pedestrians do in a rush</small></figcaption><div class="view"><canvas></canvas><div class="hud"><span class="hl"></span><span class="hr"></span></div></div></figure>
         <figure class="lens d2" id="lens2"><figcaption><span class="tag">Direction 2</span> Digital human model <small>Representation human behaviors</small></figcaption><div class="view"><canvas></canvas><div class="hud"><span class="hl"></span><span class="hr"></span></div></div></figure>
-        <figure class="lens d3" id="lens3"><figcaption><span class="tag">Direction 3</span> AI-driven integrated safety <small>what the vehicle does, before and after impact</small></figcaption><div class="view"><canvas></canvas><div class="risk"><i></i><b></b></div><div class="hud"><span class="hl"></span><span class="hr"></span></div></div></figure>
+        <figure class="lens d3" id="lens3"><figcaption><span class="tag">Direction 3</span> AI-driven integrated safety <small>Pedestrian safety protection</small></figcaption><div class="view"><canvas></canvas><div class="risk"><i></i><b></b></div><div class="hud"><span class="hl"></span><span class="hr"></span></div></div></figure>
       </div>
       <div class="axis" id="axis">
         <div class="seg s1" style="left:0%;width:44%"></div><div class="seg s2" style="left:20%;width:40%"></div><div class="seg s3" style="left:56%;width:44%"></div>
@@ -604,7 +604,7 @@ lb.addEventListener("click",closeLb);document.addEventListener("keydown",e=>{if(
     if(mode===1){o.hl.textContent=st.post>=0?"impact at half speed":n>1.0?"walking, looking away":n>.83?"perceives and decides":"steps back, too late";o.hr.textContent=st.post>=0?"":st.walk?(st.dir>0?"v = +1.4 m/s":"v = −1.0 m/s"):"v = 0"}
     if(mode===2){o.hl.textContent=st.post>=0?"Inevitable collision":n>1.2?"normal walking":n>.83?"risk perceived · fwd/stop/back":"back predicted · fwd/stop/back";o.hr.textContent=st.post>=0?"":(n>1.2?"42 · 20 · 38 %":n>.83?"10 · 55 · 35 %":"2 · 8 · 90 %")}
     if(mode===3){const risk=clamp((2.0-n)/1.5,0,1);o.risk.querySelector("i").style.setProperty("--w",(risk*100).toFixed(0)+"%");o.risk.querySelector("b").textContent=st.post>=0?"impact at "+(vImp*3.6*1.35).toFixed(0)+" km/h, hood already up":"TTC "+Math.max(0,n).toFixed(1)+" s · risk "+(risk*100).toFixed(0)+"%";
-      o.hl.textContent=st.post>=0?(st.v>0?"head on raised hood":"stopped"):st.hoodUp?"hood deployed 200 ms early":st.brake?"brakes · lights on":"tracking pedestrian";o.hr.textContent=st.post>=0?"HIC −62%":st.brake?"cannot stop in time":"threshold TTC 0.5 s"}
+      o.hl.textContent=st.post>=0?(st.v>0?"head on raised hood":"stopped"):st.hoodUp?"hood pops up 200 ms in advance":st.brake?"brakes · lights on":"tracking pedestrian";o.hr.textContent=st.post>=0?"HIC −62%":st.brake?"cannot stop in time":"threshold TTC 0.5 s"}
     boxes[mode-1].classList.toggle("on",mode===1?(n>1.0||t<.6):mode===2?(n<=1.6&&n>.4):(n<=.6));
     // render
     const cv=o.R.domElement,w=cv.clientWidth,hh=cv.clientHeight;if(cv.width!==Math.floor(w*o.R.getPixelRatio())){o.R.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix()}
