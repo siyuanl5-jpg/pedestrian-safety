@@ -372,8 +372,9 @@ document.querySelectorAll(".gal").forEach(g=>{
   const mainBtn=g.querySelector(".main"),main=mainBtn.querySelector("img"),cap=g.querySelector("figcaption");
   g.querySelectorAll(".thumbs button").forEach(b=>b.addEventListener("click",()=>{
     const ti=b.querySelector("img"),ms=main.getAttribute("src"),mc=main.getAttribute("alt");
+    const ts=b.dataset.src,tc=b.dataset.cap;
     main.classList.add("fade");
-    setTimeout(()=>{main.src=b.dataset.src;main.alt=b.dataset.cap;cap.textContent=b.dataset.cap;main.classList.remove("fade")},120);
+    setTimeout(()=>{main.src=ts;main.alt=tc;cap.textContent=tc;main.classList.remove("fade")},120);
     ti.src=ms;ti.alt=mc;b.dataset.src=ms;b.dataset.cap=mc;b.setAttribute("aria-label",mc);
   }));
   mainBtn.addEventListener("click",()=>{lbi.src=main.src;lbi.alt=main.alt;lbc.textContent=main.alt;lb.classList.add("open");document.body.style.overflow="hidden"});
