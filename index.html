@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedestrian Safety Research Group · Tsinghua University</title>
+<meta name="description" content="The last two seconds before a crash: we measure how pedestrians react, build digital pedestrians with realistic behavior, and design AI-driven integrated safety systems that reduce injury. Nie Lab, Tsinghua University.">
+<meta name="keywords" content="pedestrian safety, pedestrian-vehicle interaction, pedestrian behavior, virtual reality experiment, safety envelope, pedestrian modeling, trajectory prediction, safety-critical scenarios, integrated safety, injury prevention, autonomous vehicles, Tsinghua University, Bingbing Nie">
+<link rel="canonical" href="https://siyuanl5-jpg.github.io/pedestrian-safety/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://siyuanl5-jpg.github.io/pedestrian-safety/">
+<meta property="og:title" content="Pedestrian Safety Research Group · Tsinghua University">
+<meta property="og:description" content="The last two seconds before a crash: from human reaction to injury prevention.">
+<meta property="og:image" content="https://siyuanl5-jpg.github.io/pedestrian-safety/figs/d1_nie_platform.jpg">
+<meta name="theme-color" content="#12161C">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {"@type": "ResearchOrganization", "@id": "https://siyuanl5-jpg.github.io/pedestrian-safety/#group",
+     "name": "Pedestrian Safety Research Group, Tsinghua University", "alternateName": "Nie Lab",
+     "url": "https://siyuanl5-jpg.github.io/pedestrian-safety/",
+     "parentOrganization": {"@type": "CollegeOrUniversity", "name": "Tsinghua University", "department": "School of Vehicle and Mobility; State Key Laboratory of Intelligent Green Vehicle and Mobility"},
+     "address": {"@type": "PostalAddress", "addressLocality": "Beijing", "postalCode": "100084", "addressCountry": "CN"},
+     "email": "nbb@tsinghua.edu.cn",
+     "knowsAbout": ["pedestrian behavior and pedestrian–vehicle interaction", "road user modeling with realistic dynamic behaviors", "AI-driven integrated safety and injury prevention"],
+     "member": {"@id": "https://siyuanl5-jpg.github.io/pedestrian-safety/#nie"}},
+    {"@type": "Person", "@id": "https://siyuanl5-jpg.github.io/pedestrian-safety/#nie", "name": "Bingbing Nie", "jobTitle": "Associate Professor", "affiliation": {"@id": "https://siyuanl5-jpg.github.io/pedestrian-safety/#group"}, "email": "nbb@tsinghua.edu.cn", "sameAs": ["https://orcid.org/0000-0002-8529-8613"]},
+    {"@type": "ScholarlyArticle", "headline": "Safety envelope of pedestrians upon motor vehicle conflicts identified via active avoidance behaviour", "author": "Nie B, Li Q, Gan S, Xing B, Huang Y, Li SE", "datePublished": "2021", "isPartOf": "Scientific Reports", "sameAs": "https://doi.org/10.1038/s41598-021-82331-z"},
+    {"@type": "ScholarlyArticle", "headline": "Pedestrian decision-making uncertainty in urgent scenarios modulates multi-level, neural hierarchies", "author": "Li Q, Liu S, Shang S, Li B, Gao X, Wang J, Nie B", "datePublished": "2025", "isPartOf": "Cell Reports Physical Science", "sameAs": "https://doi.org/10.1016/j.xcrp.2024.102401"},
+    {"@type": "ScholarlyArticle", "headline": "How pedestrians react to imminent vehicle threats: a virtual reality study in safety-critical scenarios", "author": "Liu S, Li Q, Tan P, Sun H, Zhang B, Lu W, Wang Z, Zhou Q, Nie B", "datePublished": "2026", "isPartOf": "Accident Analysis and Prevention", "sameAs": "https://doi.org/10.1016/j.aap.2026.108690"},
+    {"@type": "ScholarlyArticle", "headline": "Are riders of electric two-wheelers safer than bicyclists in collisions with motor vehicles?", "author": "Huang Y, Zhou Q, Koelper C, Li Q, Nie B", "datePublished": "2020", "isPartOf": "Accident Analysis and Prevention", "sameAs": "https://doi.org/10.1016/j.aap.2019.105336"},
+    {"@type": "ScholarlyArticle", "headline": "Pedestrian trajectory prediction with reinforcement learning from a human-designed reward model", "author": "Liu S, Yang Y, Gao X, Shi L, Liu J, Chen J, Li Q, Zhou Q, Nie B", "datePublished": "2026", "isPartOf": "IEEE Intelligent Transportation Systems Magazine", "sameAs": "https://doi.org/10.1109/MITS.2026.3661479"},
+    {"@type": "ScholarlyArticle", "headline": "Pedestrian modeling with realistic dynamic behaviors and its application in virtual safety testing for autonomous vehicles", "author": "Gao X, Li Q, Liu S, Luo Y, Zhang B, Lu W, Wang Z, Zhou Q, Nie B", "datePublished": "2026", "isPartOf": "Accident Analysis and Prevention", "sameAs": "https://doi.org/10.1016/j.aap.2025.108328"},
+    {"@type": "ScholarlyArticle", "headline": "Investigation of pre-crash avoidance kinematics in pedestrians of different ages through volunteer experiment and scaling methodology", "author": "Liu S, Li Q, Sun H, Zhou Q, Nie B", "datePublished": "2025", "isPartOf": "Traffic Injury Prevention", "sameAs": "https://doi.org/10.1080/15389588.2024.2408402"},
+    {"@type": "ScholarlyArticle", "headline": "Activation strategies and effectiveness of intelligent safety systems for reducing pedestrian injuries in autonomous vehicles", "author": "Li Q, Luo Y, Liu S, Lu T, Shi L, Ji W, Han Y, Wang H, Nie B", "datePublished": "2025", "isPartOf": "Accident Analysis and Prevention", "sameAs": "https://doi.org/10.1016/j.aap.2024.107870"},
+    {"@type": "ScholarlyArticle", "headline": "A prediction-based framework for developing integrated pedestrian safety systems under high-risk scenarios", "author": "Sun H, Liu S, Li Q, Shen J, Gao X, Ji X, Zhang Y, Kou D, Nie B", "datePublished": "2026", "isPartOf": "Accident Analysis and Prevention", "sameAs": "https://doi.org/10.1016/j.aap.2026.108560"},
+    {"@type": "ScholarlyArticle", "headline": "Modeling pedestrian-vehicle interaction risk based on risk perception of experienced drivers in autonomous vehicles", "author": "Luo Y, Li Q, Liu S, Zhang B, Lu W, Wang Z, Nie B", "datePublished": "2026", "isPartOf": "Traffic Injury Prevention", "sameAs": "https://doi.org/10.1080/15389588.2026.2697052"},
+    {"@type": "Dataset", "name": "P-RLHF: safety-critical pedestrian trajectory dataset from VR experiments", "description": "1,920 pedestrian–vehicle interaction segments (928 normal walking, 992 avoidance) from a VR human-in-the-loop simulator.", "url": "https://github.com/siyuanl5-jpg/P-RLHF", "creator": {"@id": "https://siyuanl5-jpg.github.io/pedestrian-safety/#group"}},
+    {"@type": "SoftwareSourceCode", "name": "Code for: Pedestrian decision-making uncertainty in urgent scenarios", "codeRepository": "https://zenodo.org/records/14257262", "creator": {"@id": "https://siyuanl5-jpg.github.io/pedestrian-safety/#group"}}
+  ]
+}
+</script>
+<style>
+  :root{--bg:#F1F2F4;--paper:#fff;--ink:#1B2029;--ink2:#515B68;--line:#D3D8DE;--amber:#F0B323;--amberInk:#7A5600;--amberBg:#FFF3CF;
+         --dark:#12161C;--dark2:#181D25;--darkInk:#F3F4F6;--darkInk2:#A3ACB8;--darkLine:#2C3440}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151920;--paper:#1E232B;--ink:#ECEEF1;--ink2:#A6AEB8;--line:#343C47;--amberInk:#F5D680;--amberBg:#3A2F0E}}
+  :root[data-theme="dark"]{--bg:#151920;--paper:#1E232B;--ink:#ECEEF1;--ink2:#A6AEB8;--line:#343C47;--amberInk:#F5D680;--amberBg:#3A2F0E}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:64px}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:"Public Sans",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  h1,h2,h3{font-family:"Newsreader",Georgia,serif;font-weight:500;letter-spacing:-.012em;margin:0}
+  h2{font-size:clamp(1.8rem,3.2vw,2.5rem);line-height:1.12}
+  p{margin:0 0 1rem;max-width:62ch}
+  a{color:inherit;text-decoration-color:var(--amber);text-decoration-thickness:2px;text-underline-offset:3px}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+  img{max-width:100%}
+  .wrap{width:min(1120px,92vw);margin:0 auto}
+  section{padding:5rem 0}
+  .sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:2.2rem}
+  .sec-h p{color:var(--ink2);margin:0;max-width:48ch}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:20;background:rgba(18,22,28,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--darkInk);border-bottom:1px solid var(--darkLine)}
+  .nav .wrap{display:flex;justify-content:space-between;align-items:center;height:60px;gap:1rem}
+  .brand{font-family:"Newsreader",serif;font-size:1.08rem;font-weight:600;text-decoration:none;white-space:nowrap}
+  .nav nav a{margin-left:1.4rem;font-size:.92rem;text-decoration:none;color:var(--darkInk2);transition:color .15s}
+  .nav nav a:hover{color:var(--amber)}
+
+  /* hero */
+  .hero{background:radial-gradient(1200px 600px at 80% -10%,#26303D 0%,var(--dark) 55%);color:var(--darkInk);padding:4.5rem 0 0;overflow:hidden}
+  .hero .grid{display:grid;grid-template-columns:1.15fr 1fr;gap:3rem;align-items:center}
+  .hero-img{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+  .hero-img img{display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:11/10}
+  .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,22,28,0) 60%,rgba(18,22,28,.85));}
+  .hero-img figcaption{position:absolute;left:1rem;right:1rem;bottom:.9rem;font-size:.8rem;color:var(--darkInk2)}
+  .hero h1{font-size:clamp(3.2rem,8vw,6.2rem);line-height:1;letter-spacing:-.02em}
+  .hero .grid{grid-template-columns:1fr 1.15fr}
+  .hero h1 em{font-style:normal;color:var(--amber)}
+  .hero .lede{font-size:1.15rem;color:var(--darkInk2);max-width:54ch;margin:1.4rem 0 0}
+  .hero .cta{margin-top:1.8rem;display:flex;gap:.8rem;flex-wrap:wrap}
+  .hero .cta a{text-decoration:none;font-size:.95rem;padding:.6rem 1.1rem;border-radius:3px;border:1px solid var(--darkLine);color:var(--darkInk);transition:border-color .15s,background .15s}
+  .hero .cta a.primary{background:var(--amber);color:#1B2029;border-color:var(--amber);font-weight:600}
+  .hero .cta a:hover{border-color:var(--amber)}
+
+
+  /* hero 3D scene */
+  .scene{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.45);border:1px solid var(--darkLine);background:#161B22;aspect-ratio:16/10}
+  .scene canvas{display:block;width:100%;height:100%}
+  .scene .hud{position:absolute;left:1rem;bottom:.9rem;right:1rem;display:flex;justify-content:space-between;font-size:.82rem;color:var(--darkInk2);pointer-events:none}
+  .scene .hud b{color:var(--darkInk);font-weight:600}
+  .scene .hud .ttc{font-family:"Newsreader",serif;font-size:1.3rem;color:var(--amber)}
+  /* timeline */
+  .tl{margin:4rem 0 0;padding:2.6rem 0 3rem;position:relative}
+  .tl::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--darkLine)}
+  .tl-cap{font-size:.85rem;color:var(--darkInk2);margin-bottom:2.2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+  .tl-cap b{color:var(--darkInk);font-weight:600}
+  .track{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);position:relative}
+  .track::before{content:"";position:absolute;left:8%;right:8%;top:84px;height:2px;background:var(--darkLine)}
+  .ev{position:relative;text-align:center;padding:0 .4rem;min-height:210px}
+  .ev .tag{display:inline-block;font-size:.68rem;font-weight:600;letter-spacing:.02em;padding:.15rem .45rem;border-radius:2px;border:1px solid var(--darkLine);color:var(--darkInk2);margin-bottom:.55rem}
+  .ev.d1 .tag{border-color:#5B8DEF;color:#9BBAF6}.ev.d2 .tag{border-color:#4FC3A1;color:#9BE3CB}.ev.d3 .tag{border-color:var(--amber);color:var(--amber)}
+  .ev .t{font-weight:600;font-size:.95rem;line-height:1.25;min-height:2.5em}
+  .ev .dot{width:14px;height:14px;border-radius:50%;background:var(--dark);border:3px solid var(--darkInk2);margin:.65rem auto .55rem;position:relative;z-index:1}
+  .ev.d1 .dot{border-color:#5B8DEF}.ev.d2 .dot{border-color:#4FC3A1}.ev.d3 .dot{border-color:var(--amber)}
+  .ev.impact .dot{background:var(--amber);border-color:var(--amber);box-shadow:0 0 0 6px rgba(240,179,35,.18)}
+  .ev .time{font-family:"Newsreader",serif;font-size:1.35rem;color:var(--darkInk);line-height:1}
+  .ev .s{font-size:.8rem;color:var(--darkInk2);margin-top:.4rem;line-height:1.35}
+  .legend{display:flex;gap:1.6rem;flex-wrap:wrap;font-size:.85rem;color:var(--darkInk2);margin-top:1.2rem;justify-content:center}
+  .legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:.45rem;vertical-align:-1px}
+  .legend .l1::before{background:#5B8DEF}.legend .l2::before{background:#4FC3A1}.legend .l3::before{background:var(--amber)}
+  .zebra{height:12px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.28) 0 56px,transparent 56px 104px)}
+
+  /* stats strip */
+  .stats{background:var(--paper);border-bottom:1px solid var(--line)}
+  .stats .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;padding:1.8rem 0}
+  .stat b{display:block;font-family:"Newsreader",serif;font-size:2.2rem;font-weight:500;line-height:1;color:var(--amberInk)}
+  .stat span{display:block;font-size:.88rem;color:var(--ink2);margin-top:.35rem}
+
+  /* directions */
+  .dir{display:grid;grid-template-columns:5fr 7fr;gap:3rem;padding:3.2rem 0;border-top:1px solid var(--line);align-items:start}
+  .dir:first-of-type{border-top:0;padding-top:0}
+  .dir.flip{grid-template-columns:7fr 5fr}.dir.flip>div:first-child{order:2}
+  .dir .n{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.02em;color:var(--amberInk);background:var(--amberBg);padding:.2rem .55rem;border-radius:2px;margin-bottom:.9rem}
+  .dir h3{font-size:1.6rem;line-height:1.18;margin-bottom:.7rem}
+  .dir .q{color:var(--ink2);font-size:1rem;margin-bottom:1.3rem}
+  .big{font-family:"Newsreader",serif;font-size:3.6rem;line-height:1;color:var(--amberInk)}
+  .big+small{display:block;color:var(--ink2);font-size:.9rem;margin:.35rem 0 1.2rem;max-width:36ch}
+  .dir ul{margin:0 0 1.1rem;padding-left:0;list-style:none;font-size:.95rem}
+  .dir li{margin-bottom:.45rem;padding-left:1.1rem;position:relative}
+  .dir li::before{content:"";position:absolute;left:0;top:.6em;width:6px;height:6px;background:var(--amber);border-radius:50%}
+  .pp{font-size:.85rem;color:var(--ink2);border-top:1px dashed var(--line);padding-top:.7rem;display:flex;flex-wrap:wrap;gap:.4rem .5rem;align-items:center}
+  .pp a{text-decoration:none;border:1px solid var(--line);padding:.15rem .55rem;border-radius:999px;background:var(--paper);color:var(--ink);font-size:.8rem;transition:border-color .15s}.pp a:hover{border-color:var(--amber)}
+  .gal{margin:0;display:flex;flex-direction:column;gap:.7rem}
+  .gal .main{background:var(--paper);border:1px solid var(--line);padding:.7rem;display:grid;place-items:center;min-height:320px;cursor:zoom-in;width:100%;font:inherit;position:relative;transition:box-shadow .2s}
+  .gal .main:hover{box-shadow:0 8px 28px rgba(0,0,0,.10)}
+  .gal .main::after{content:"⤢";position:absolute;right:.6rem;bottom:.5rem;font-size:.9rem;color:var(--ink2);background:var(--paper);padding:.1rem .35rem;border:1px solid var(--line);border-radius:2px}
+  .gal .main img{max-width:100%;max-height:460px;object-fit:contain;display:block;transition:opacity .25s}
+  .gal .main img.fade{opacity:0}
+  .gal figcaption{font-size:.85rem;color:var(--ink2);padding:0 .2rem;line-height:1.4}
+  .gal .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:.55rem}
+  .gal .thumbs button{padding:.3rem;border:1.5px solid var(--line);background:#fff;cursor:pointer;aspect-ratio:4/3;border-radius:3px;transition:border-color .15s,transform .15s}
+  .gal .thumbs button:hover{border-color:var(--amber);transform:translateY(-2px)}
+  .gal .thumbs img{width:100%;height:100%;object-fit:contain;display:block}
+
+  /* loop band */
+  .loop{margin-top:3.5rem;background:var(--dark);color:var(--darkInk);border-radius:4px;padding:1.6rem 2rem;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:1rem;align-items:center;text-align:center}
+  .loop b{display:block;font-family:"Newsreader",serif;font-size:1.25rem;font-weight:500}
+  .loop small{color:var(--darkInk2);font-size:.82rem}
+  .loop .ar{color:var(--amber);font-size:1.6rem}
+  .loop .back{grid-column:1/-1;font-size:.85rem;color:var(--darkInk2);border-top:1px dashed var(--darkLine);padding-top:.8rem;margin-top:.3rem}
+  .loop .back b{display:inline;font-family:inherit;font-size:inherit;color:var(--amber)}
+
+
+  /* resources */
+  .res{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .res div{background:var(--paper);border:1px solid var(--line);border-top:3px solid var(--amber);padding:1.3rem 1.4rem;display:flex;flex-direction:column}
+  .res h3{font-size:1.15rem;margin-bottom:.45rem}.res p{font-size:.92rem;color:var(--ink2);margin-bottom:1rem;flex:1}
+  .res .btn{align-self:flex-start}
+
+  /* team */
+  .team{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+  .person{display:flex;gap:.8rem;align-items:center;background:var(--paper);border:1px solid var(--line);padding:.8rem .9rem}
+  .avatar{width:44px;height:44px;border-radius:50%;background:var(--amberBg);color:var(--amberInk);display:grid;place-items:center;font-family:"Newsreader",serif;font-size:1.1rem;flex:none}
+  .person b{display:block;font-weight:600;font-size:.95rem}.person span{color:var(--ink2);font-size:.82rem}
+  .partners{margin-top:2rem;display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;font-size:.9rem;color:var(--ink2)}
+  .partners span{border:1px solid var(--line);padding:.25rem .7rem;border-radius:999px;background:var(--paper);color:var(--ink)}
+  .todo{background:var(--amberBg);color:var(--amberInk);border:1px dashed var(--amber);padding:.5rem .8rem;font-size:.85rem;margin-bottom:1.2rem;max-width:none}
+
+  /* contact band */
+  .contact{background:var(--dark);color:var(--darkInk)}
+  .contact .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:2rem;align-items:center;padding:3.5rem 0}
+  .contact h2{color:var(--darkInk)}.contact p{color:var(--darkInk2)}
+  .contact a.mail{font-family:"Newsreader",serif;font-size:1.5rem;text-decoration:none;color:var(--amber)}
+  footer{padding:1.8rem 0;color:var(--ink2);font-size:.82rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(10,12,16,.92);display:none;place-items:center;z-index:50;padding:2rem;cursor:zoom-out}
+  .lb.open{display:grid}
+  .lb img{max-width:min(1400px,94vw);max-height:82vh;object-fit:contain;background:#fff;padding:.5rem}
+  .lb p{color:#E6E9EE;font-size:.9rem;max-width:80ch;text-align:center;margin:1rem auto 0}
+
+  @media (max-width:900px){
+    .hero .grid{grid-template-columns:1fr}
+    .track{grid-template-columns:1fr;gap:.2rem}.track::before{left:11px;right:auto;top:0;bottom:0;width:2px;height:auto}
+    .ev{text-align:left;padding:.6rem 0 .6rem 2.2rem;min-height:0;display:grid;grid-template-columns:1fr;gap:.15rem}.ev .tag{justify-self:start}
+    .ev .dot{position:absolute;left:5px;top:1.2rem;margin:0}.ev .t{min-height:0}.ev .time{font-size:1.1rem}
+    .stats .wrap{grid-template-columns:1fr;gap:1rem}
+    .dir{grid-template-columns:1fr;gap:1.4rem}.dir.flip{grid-template-columns:1fr}.dir.flip>div:first-child{order:0}
+    .loop{grid-template-columns:1fr;gap:.6rem}.loop .ar{transform:rotate(90deg)}
+    .res,.team{grid-template-columns:1fr 1fr}.contact .wrap{grid-template-columns:1fr}
+    .pub{grid-template-columns:3rem 1fr}.pub .btn{grid-column:2}
+    section{padding:3.2rem 0}.nav nav a{margin-left:.9rem;font-size:.85rem}
+  }
+  @media (max-width:560px){.res,.team{grid-template-columns:1fr}.gal .thumbs{grid-template-columns:repeat(2,1fr)}.nav nav{display:none}}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="wrap">
+  <a class="brand" href="#top">Pedestrian Safety Research Group · Tsinghua</a>
+  <nav><a href="#research">Research</a><a href="#resources">Data</a><a href="#team">Team</a><a href="#contact">Contact</a></nav>
+</div></div>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h1>Pedestrian Safety</h1>
+        <div class="cta"><a class="primary" href="#research">See the research</a></div>
+      </div>
+      <div class="scene" id="scene3d" aria-label="3D animation: a pedestrian starts crossing, stops and steps back while the approaching car brakes"><canvas id="c3d"></canvas><div class="hud"><span id="hud-ped"><b>Pedestrian</b> walks in</span><span class="ttc" id="hud-ttc"></span><span id="hud-car"><b>Car</b> constant speed</span></div></div>
+    </div>
+
+    <div class="tl" aria-label="Pre-crash timeline">
+      <div class="tl-cap"><span><b>What happens in the last two seconds,</b> and which direction of our work covers it</span><span>time to collision →</span></div>
+      <ol class="track">
+        <li class="ev d1"><span class="tag">Behavior</span><div class="t">Pedestrian sees the car</div><div class="dot"></div><div class="time">2.0 s</div><div class="s">decides in 0.17–0.24 s if they will avoid it</div></li>
+        <li class="ev d1"><span class="tag">Behavior</span><div class="t">Runs, stops, or steps back</div><div class="dot"></div><div class="time">1.5 s</div><div class="s">execution takes 1.5–1.8 s</div></li>
+        <li class="ev d2"><span class="tag">Modeling</span><div class="t">A digital pedestrian does the same</div><div class="dot"></div><div class="time">1.0 s</div><div class="s">so AVs can be tested against real reactions</div></li>
+        <li class="ev d3"><span class="tag">Safety system</span><div class="t">Integrated protection triggers</div><div class="dot"></div><div class="time">0.5 s</div><div class="s">−59% probability of severe head injury</div></li>
+        <li class="ev d3"><span class="tag">Safety system</span><div class="t">Active hood deploys</div><div class="dot"></div><div class="time">−0.2 s</div><div class="s">predicted from motion, not from contact</div></li>
+        <li class="ev d3 impact"><span class="tag">Safety system</span><div class="t">Impact</div><div class="dot"></div><div class="time">0</div><div class="s">head contact 60–120 ms later, on a deployed hood</div></li>
+      </ol>
+      <div class="legend"><span class="l1">Direction 1 · Behavior &amp; interaction</span><span class="l2">Direction 2 · Realistic road-user models</span><span class="l3">Direction 3 · AI-driven integrated safety</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats"><div class="wrap">
+  <div class="stat"><b>23%</b><span>of 1.19 million annual road deaths are pedestrians (WHO 2023)</span></div>
+  <div class="stat"><b>~1 in 2</b><span>pedestrians who see the car manage to avoid it, changing the crash outcome</span></div>
+  <div class="stat"><b>10 papers</b><span>since 2020, linked under each direction below</span></div>
+</div></div>
+
+<section id="research">
+  <div class="wrap">
+    <div class="sec-h"><h2>Three directions, one loop</h2><p>Each direction answers a question the next one depends on. Click any thumbnail to bring it forward; click the large figure to enlarge.</p></div>
+
+    <article class="dir">
+      <div>
+        <span class="n">Direction 1</span>
+        <h3>Pedestrian behavior &amp; pedestrian–vehicle interaction</h3>
+        <p class="q">What do people actually do when a car is about to hit them?</p>
+        <div class="big">0.17 s</div>
+        <small>decision time of pedestrians who avoid the crash, versus 0.41 s for those who are hit</small>
+        <ul><li>Immersive VR conflicts with motion capture and EEG, not roadside cameras</li><li>Safety envelope, three decision modes, and why uncertainty peaks under high urgency</li><li>Extends to e-scooter riders and cyclists</li></ul>
+        <p class="pp">Papers <a href="https://doi.org/10.1038/s41598-021-82331-z" target="_blank" rel="noopener">Sci. Rep. 2021</a><a href="https://doi.org/10.1016/j.xcrp.2024.102401" target="_blank" rel="noopener">Cell Rep. Phys. Sci. 2025</a><a href="https://doi.org/10.1016/j.aap.2026.108690" target="_blank" rel="noopener">AAP 2026</a><a href="https://doi.org/10.1016/j.aap.2019.105336" target="_blank" rel="noopener">AAP 2020</a></p>
+      </div>
+      <figure class="gal">
+        <button type="button" class="main" aria-label="Enlarge figure"><img src="figs/d1_nie_platform.jpg" alt="Immersive VR conflict scenarios with synchronized full-body motion capture: the experiment platform behind the safety envelope (Nie et al., Sci. Rep. 2021)"></button>
+        <figcaption>Immersive VR conflict scenarios with synchronized full-body motion capture: the experiment platform behind the safety envelope (Nie et al., Sci. Rep. 2021)</figcaption>
+        <div class="thumbs"><button type="button" data-src="figs/d1_nie_envelope.jpg" data-cap="Safety envelope: initial pedestrian positions where a collision is unavoidable, derived from measured avoidance ability (Sci. Rep. 2021)" aria-label="Safety envelope: initial pedestrian positions where a collision is unavoidable, derived from measured avoidance ability (Sci. Rep. 2021)"><img src="figs/d1_nie_envelope.jpg" alt="Safety envelope: initial pedestrian positions where a collision is unavoidable, derived from measured avoidance ability (Sci. Rep. 2021)" loading="lazy"></button><button type="button" data-src="figs/d1_li_crps.jpg" data-cap="From VR to EEG: decision uncertainty falls then rises with urgency as goals shift from reward to safety to panic (Cell Rep. Phys. Sci. 2025)" aria-label="From VR to EEG: decision uncertainty falls then rises with urgency as goals shift from reward to safety to panic (Cell Rep. Phys. Sci. 2025)"><img src="figs/d1_li_crps.jpg" alt="From VR to EEG: decision uncertainty falls then rises with urgency as goals shift from reward to safety to panic (Cell Rep. Phys. Sci. 2025)" loading="lazy"></button><button type="button" data-src="figs/d1_liu_vr.jpg" data-cap="VR crossing experiment with eye tracking and CARLA scenes; three decision modes under increasing spatiotemporal pressure (AAP 2026)" aria-label="VR crossing experiment with eye tracking and CARLA scenes; three decision modes under increasing spatiotemporal pressure (AAP 2026)"><img src="figs/d1_liu_vr.jpg" alt="VR crossing experiment with eye tracking and CARLA scenes; three decision modes under increasing spatiotemporal pressure (AAP 2026)" loading="lazy"></button><button type="button" data-src="figs/d1_huang_e2w.jpg" data-cap="Frame-by-frame reconstruction of a real e-scooter crash validates the multibody model used to compare rider head-injury risk (AAP 2020)" aria-label="Frame-by-frame reconstruction of a real e-scooter crash validates the multibody model used to compare rider head-injury risk (AAP 2020)"><img src="figs/d1_huang_e2w.jpg" alt="Frame-by-frame reconstruction of a real e-scooter crash validates the multibody model used to compare rider head-injury risk (AAP 2020)" loading="lazy"></button></div>
+      </figure>
+    </article>
+
+    <article class="dir flip">
+      <div>
+        <span class="n">Direction 2</span>
+        <h3>Road-user modeling with realistic dynamic behaviors</h3>
+        <p class="q">Can a virtual pedestrian perceive, decide and move like a real one?</p>
+        <div class="big">−28%</div>
+        <small>collisions in 4,200 simulated conflicts once avoidance behavior is modeled instead of constant-speed walking</small>
+        <ul><li>Digital pedestrian in CARLA, validated on real near-crash trajectories</li><li>RLHF-tuned trajectory predictor for rare avoidance behaviors</li><li>Age-scaled avoidance kinematics, without putting elderly volunteers at risk</li></ul>
+        <p class="pp">Papers <a href="https://doi.org/10.1109/MITS.2026.3661479" target="_blank" rel="noopener">IEEE ITS Mag. 2026</a><a href="https://doi.org/10.1016/j.aap.2025.108328" target="_blank" rel="noopener">AAP 2026</a><a href="https://doi.org/10.1080/15389588.2024.2408402" target="_blank" rel="noopener">Traffic Inj. Prev. 2025</a></p>
+      </div>
+      <figure class="gal">
+        <button type="button" class="main" aria-label="Enlarge figure"><img src="figs/d2_gao_corridor.jpg" alt="Age-specific avoidance speed corridors and a 54-joint posture library are sampled and coupled to animate a digital pedestrian (Gao et al., AAP 2026)"></button>
+        <figcaption>Age-specific avoidance speed corridors and a 54-joint posture library are sampled and coupled to animate a digital pedestrian (Gao et al., AAP 2026)</figcaption>
+        <div class="thumbs"><button type="button" data-src="figs/d2_gao_framework.jpg" data-cap="Framework: pedestrian behavior model, pre-crash scenarios reconstructed from real accidents, and a virtual testing platform with injury metrics (AAP 2026)" aria-label="Framework: pedestrian behavior model, pre-crash scenarios reconstructed from real accidents, and a virtual testing platform with injury metrics (AAP 2026)"><img src="figs/d2_gao_framework.jpg" alt="Framework: pedestrian behavior model, pre-crash scenarios reconstructed from real accidents, and a virtual testing platform with injury metrics (AAP 2026)" loading="lazy"></button><button type="button" data-src="figs/d2_gao_weather.jpg" data-cap="Occluded-pedestrian test scenario in CARLA under sunny, foggy, rainy and night conditions (AAP 2026)" aria-label="Occluded-pedestrian test scenario in CARLA under sunny, foggy, rainy and night conditions (AAP 2026)"><img src="figs/d2_gao_weather.jpg" alt="Occluded-pedestrian test scenario in CARLA under sunny, foggy, rainy and night conditions (AAP 2026)" loading="lazy"></button><button type="button" data-src="figs/d2_itsm_longtail.jpg" data-cap="The long-tail problem: avoidance behaviors are rare in training data, so predictors collapse onto normal walking; RLHF fine-tuning corrects it (IEEE ITS Mag. 2026)" aria-label="The long-tail problem: avoidance behaviors are rare in training data, so predictors collapse onto normal walking; RLHF fine-tuning corrects it (IEEE ITS Mag. 2026)"><img src="figs/d2_itsm_longtail.jpg" alt="The long-tail problem: avoidance behaviors are rare in training data, so predictors collapse onto normal walking; RLHF fine-tuning corrects it (IEEE ITS Mag. 2026)" loading="lazy"></button><button type="button" data-src="figs/d2_liutip_area.jpg" data-cap="Potential collision areas grow with pedestrian age and vehicle speed, from age-scaled avoidance kinematics (Traffic Inj. Prev. 2025)" aria-label="Potential collision areas grow with pedestrian age and vehicle speed, from age-scaled avoidance kinematics (Traffic Inj. Prev. 2025)"><img src="figs/d2_liutip_area.jpg" alt="Potential collision areas grow with pedestrian age and vehicle speed, from age-scaled avoidance kinematics (Traffic Inj. Prev. 2025)" loading="lazy"></button></div>
+      </figure>
+    </article>
+
+    <article class="dir">
+      <div>
+        <span class="n">Direction 3</span>
+        <h3>AI-driven integrated safety &amp; injury prevention</h3>
+        <p class="q">When the risk is visible, how should braking, steering and protection act together?</p>
+        <div class="big">−59%</div>
+        <small>probability of severe head injury when the integrated system triggers at TTC −0.5 s</small>
+        <ul><li>Prediction-based active hood: 200 ms earlier, up to 62% HIC reduction, zero false positives on 110 real near-misses</li><li>Risk thresholds learned from 113 safety-driver takeovers in an L3 fleet</li><li>Evaluated by injury outcome, not collision count alone</li></ul>
+        <p class="pp">Papers <a href="https://doi.org/10.1016/j.aap.2024.107870" target="_blank" rel="noopener">AAP 2025</a><a href="https://doi.org/10.1016/j.aap.2026.108560" target="_blank" rel="noopener">AAP 2026</a><a href="https://doi.org/10.1080/15389588.2026.2697052" target="_blank" rel="noopener">Traffic Inj. Prev. 2026</a></p>
+      </div>
+      <figure class="gal">
+        <button type="button" class="main" aria-label="Enlarge figure"><img src="figs/d3_sun_framework.jpg" alt="Prediction-based integrated protection: vehicle-view human-in-the-loop data, short-horizon forecasting, and active-hood triggering before contact (Sun et al., AAP 2026)"></button>
+        <figcaption>Prediction-based integrated protection: vehicle-view human-in-the-loop data, short-horizon forecasting, and active-hood triggering before contact (Sun et al., AAP 2026)</figcaption>
+        <div class="thumbs"><button type="button" data-src="figs/d3_li_iss.jpg" data-cap="Intelligent safety system coupling perception, vehicle control and deployable passive devices; activation strategies derived from reconstructed crashes (AAP 2025)" aria-label="Intelligent safety system coupling perception, vehicle control and deployable passive devices; activation strategies derived from reconstructed crashes (AAP 2025)"><img src="figs/d3_li_iss.jpg" alt="Intelligent safety system coupling perception, vehicle control and deployable passive devices; activation strategies derived from reconstructed crashes (AAP 2025)" loading="lazy"></button><button type="button" data-src="figs/d3_li_hood.jpg" data-cap="Head-impact simulation on the hood: baseline versus deployed protection (AAP 2025)" aria-label="Head-impact simulation on the hood: baseline versus deployed protection (AAP 2025)"><img src="figs/d3_li_hood.jpg" alt="Head-impact simulation on the hood: baseline versus deployed protection (AAP 2025)" loading="lazy"></button><button type="button" data-src="figs/d3_luo_takeover.jpg" data-cap="Model-predicted risk rises about 1 s before and peaks at the safety driver's takeover, learned from 113 real L3-fleet events (Traffic Inj. Prev. 2026)" aria-label="Model-predicted risk rises about 1 s before and peaks at the safety driver's takeover, learned from 113 real L3-fleet events (Traffic Inj. Prev. 2026)"><img src="figs/d3_luo_takeover.jpg" alt="Model-predicted risk rises about 1 s before and peaks at the safety driver's takeover, learned from 113 real L3-fleet events (Traffic Inj. Prev. 2026)" loading="lazy"></button><button type="button" data-src="figs/d3_sun_platform.jpg" data-cap="Vehicle-perspective VR data acquisition: dynamics control, cameras and lidar, automatic annotation (AAP 2026)" aria-label="Vehicle-perspective VR data acquisition: dynamics control, cameras and lidar, automatic annotation (AAP 2026)"><img src="figs/d3_sun_platform.jpg" alt="Vehicle-perspective VR data acquisition: dynamics control, cameras and lidar, automatic annotation (AAP 2026)" loading="lazy"></button></div>
+      </figure>
+    </article>
+
+    <div class="loop">
+      <div><b>Measure people</b><small>VR · motion capture · EEG</small></div><span class="ar">→</span>
+      <div><b>Build digital pedestrians</b><small>models that react like humans</small></div><span class="ar">→</span>
+      <div><b>Protect before impact</b><small>active + passive, one timeline</small></div>
+      <div class="back">↺ <b>Real-world fleet data</b> from deployed systems feeds back into the behavior studies</div>
+    </div>
+  </div>
+</section>
+
+<section id="resources">
+  <div class="wrap">
+    <div class="sec-h"><h2>Data, code, platforms</h2></div>
+    <div class="res">
+      <div><h3>P-RLHF dataset</h3><p>1,920 VR pedestrian–vehicle interaction segments, 992 with avoidance behavior. Companion to IEEE ITS Mag. 2026.</p><a class="btn" href="https://github.com/siyuanl5-jpg/P-RLHF">Open on GitHub</a></div>
+      <div><h3>Decision-uncertainty code</h3><p>VR and EEG analysis code from the Cell Reports Physical Science paper.</p><a class="btn" href="https://zenodo.org/records/14257262">Open on Zenodo</a></div>
+      <div><h3>Experimental platforms</h3><p>VR pedestrian simulator, 24-camera motion capture, 64-channel EEG, and a CARLA virtual testing platform with injury metrics. Open to joint experiments.</p><a class="btn" href="#contact">Ask about access</a></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="sec-h"><h2>Team</h2></div>
+    <p class="todo">Placeholder: confirm names and roles, add photos.</p>
+    <div class="team">
+      <div class="person"><div class="avatar">BN</div><div><b>Bingbing Nie</b><span>Principal investigator · <a href="https://orcid.org/0000-0002-8529-8613">ORCID</a></span></div></div>
+      <div class="person"><div class="avatar">QZ</div><div><b>Qing Zhou</b><span>Professor</span></div></div>
+      <div class="person"><div class="avatar">QL</div><div><b>Quan Li</b><span>Research associate</span></div></div>
+      <div class="person"><div class="avatar">SL</div><div><b>Siyuan Liu</b><span>PhD student</span></div></div>
+      <div class="person"><div class="avatar">XG</div><div><b>Xin Gao</b><span>PhD student</span></div></div>
+      <div class="person"><div class="avatar">HS</div><div><b>Huamu Sun</b><span>Graduate student</span></div></div>
+      <div class="person"><div class="avatar">YL</div><div><b>Yiran Luo</b><span>Graduate student</span></div></div>
+      <div class="person"><div class="avatar">YY</div><div><b>Yi Yang</b><span>Master's student</span></div></div>
+    </div>
+    <div class="partners">Industry partners <span>DiDi Global</span><span>Li Auto</span><span>CAERI</span></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div><h2>Working on pedestrian or VRU safety?</h2><p>We welcome visiting students, joint VR experiments, shared datasets, and industry collaboration on integrated safety systems.</p></div>
+    <div><a class="mail" href="mailto:nbb@tsinghua.edu.cn">nbb@tsinghua.edu.cn</a><p style="margin-top:.6rem">School of Vehicle and Mobility, Tsinghua University, Beijing 100084</p></div>
+  </div>
+</section>
+
+<footer class="wrap"><span>State Key Laboratory of Intelligent Green Vehicle and Mobility, Tsinghua University · Supported by NSFC</span><span>Figures reproduced from the group's own publications</span></footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged figure"><div><img id="lb-img" alt=""><p id="lb-cap"></p></div></div>
+
+<script>
+// galleries: swap thumbnail with main figure; enlarge main in a lightbox
+const lb=document.getElementById("lb"),lbi=document.getElementById("lb-img"),lbc=document.getElementById("lb-cap");
+document.querySelectorAll(".gal").forEach(g=>{
+  const mainBtn=g.querySelector(".main"),main=mainBtn.querySelector("img"),cap=g.querySelector("figcaption");
+  g.querySelectorAll(".thumbs button").forEach(b=>b.addEventListener("click",()=>{
+    const ti=b.querySelector("img"),ms=main.getAttribute("src"),mc=main.getAttribute("alt");
+    main.classList.add("fade");
+    setTimeout(()=>{main.src=b.dataset.src;main.alt=b.dataset.cap;cap.textContent=b.dataset.cap;main.classList.remove("fade")},120);
+    ti.src=ms;ti.alt=mc;b.dataset.src=ms;b.dataset.cap=mc;b.setAttribute("aria-label",mc);
+  }));
+  mainBtn.addEventListener("click",()=>{lbi.src=main.src;lbi.alt=main.alt;lbc.textContent=main.alt;lb.classList.add("open");document.body.style.overflow="hidden"});
+});
+function closeLb(){lb.classList.remove("open");document.body.style.overflow=""}
+lb.addEventListener("click",closeLb);document.addEventListener("keydown",e=>{if(e.key==="Escape")closeLb()});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const box=document.getElementById("scene3d"),canvas=document.getElementById("c3d");
+  if(!window.THREE||!canvas.getContext("webgl")){box.innerHTML='<img src="figs/hero_carla.jpg" alt="Virtual pedestrian avoiding a car" style="width:100%;height:100%;object-fit:cover">';return;}
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const R=new THREE.WebGLRenderer({canvas,antialias:true});R.setPixelRatio(Math.min(devicePixelRatio,2));R.shadowMap.enabled=true;R.shadowMap.type=THREE.PCFSoftShadowMap;
+  const S=new THREE.Scene();S.background=new THREE.Color(0x161B22);S.fog=new THREE.Fog(0x161B22,26,60);
+  const cam=new THREE.PerspectiveCamera(38,16/10,.1,100);cam.position.set(9,5.2,12.5);cam.lookAt(-4.5,.4,.8);
+  S.add(new THREE.HemisphereLight(0xBFC8D6,0x1A2029,.75));
+  const sun=new THREE.DirectionalLight(0xFFF4E0,1.1);sun.position.set(-8,14,6);sun.castShadow=true;sun.shadow.mapSize.set(2048,2048);
+  Object.assign(sun.shadow.camera,{left:-25,right:15,top:15,bottom:-15,near:1,far:40});S.add(sun);
+  const M=(c,o={})=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.85,metalness:.05},o));
+  const add=(g,m,p,r,rec=true,parent=S)=>{const o=new THREE.Mesh(g,m);o.position.set(...p);if(r)o.rotation.set(...r);o.castShadow=rec;o.receiveShadow=true;parent.add(o);return o};
+  // ground, road, sidewalks, crosswalk
+  add(new THREE.PlaneGeometry(120,120),M(0x1E252F),[0,-.01,0],[-Math.PI/2,0,0],false);
+  add(new THREE.PlaneGeometry(90,8),M(0x2B3441,{roughness:1}),[-20,0,0],[-Math.PI/2,0,0],false);
+  const sw=M(0x3A4351);add(new THREE.BoxGeometry(90,.25,4),sw,[-20,.12,6]);add(new THREE.BoxGeometry(90,.25,4),sw,[-20,.12,-6]);
+  const dash=M(0xC9CFD8,{emissive:0x333333});for(let x=-50;x<12;x+=3)add(new THREE.PlaneGeometry(1.6,.14),dash,[x,.01,0],[-Math.PI/2,0,0],false);
+  const zeb=M(0xE6E9EE,{emissive:0x222222});for(let z=-3.4;z<=3.4;z+=1.1)add(new THREE.PlaneGeometry(2.6,.6),zeb,[3.2,.012,z],[-Math.PI/2,0,0],false);
+  // environment: buildings with lit windows, street lamps, trees
+  const winTex=(()=>{const c=document.createElement("canvas");c.width=64;c.height=128;const g=c.getContext("2d");g.fillStyle="#1F2731";g.fillRect(0,0,64,128);
+    for(let y=8;y<128;y+=24)for(let x=8;x<64;x+=20){const lit=Math.random()<.45;g.fillStyle=lit?(Math.random()<.5?"#F5D680":"#DCE6F5"):"#2B3540";g.fillRect(x,y,10,14)}
+    const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t})();
+  const bld=(x,z,w,hh,d)=>{const m=new THREE.MeshStandardMaterial({map:winTex,color:0x9AA3B0,roughness:.9,emissive:0xFFE8A8,emissiveMap:winTex,emissiveIntensity:.55});
+    m.map=winTex.clone();m.map.needsUpdate=true;m.map.repeat.set(w/2.2,hh/2.6);m.emissiveMap=m.map;
+    const b=add(new THREE.BoxGeometry(w,hh,d),m,[x,hh/2,z]);add(new THREE.BoxGeometry(w+.3,.25,d+.3),M(0x2B3441),[x,hh+.12,z]);return b};
+  [[-34,-13,7,6,6],[-26,-14,6,9,7],[-18,-13,7,5,6],[-10,-14,6,11,7],[-3,-13,6,7,6],[4,-14,7,8,7],[11,-13,6,5,6],[18,-14,7,10,7],
+   [-36,14,7,4,6],[-27,15,8,7,7],[-17,14,6,5,6],[-9,15,7,8,7],[-1,16,6,4,6],[8,17,7,6,6]].forEach(a=>bld(...a));
+  const lampM=M(0x8A93A3,{metalness:.4,roughness:.5}),bulbM=M(0xFFF1C8,{emissive:0xFFE6A0,emissiveIntensity:1.5});
+  for(let x=-36;x<=12;x+=12)[4.4,-4.4].forEach(z=>{if(z>0&&x>-8)return;add(new THREE.CylinderGeometry(.06,.08,4.2,10),lampM,[x,2.1,z]);add(new THREE.BoxGeometry(.5,.12,.3),bulbM,[x,4.25,z*.94],null,false);
+    if(z>0||x>-20){const pl=new THREE.PointLight(0xFFE6A0,.55,11,2);pl.position.set(x,4.1,z*.9);S.add(pl)}});
+  const trunk=M(0x4A3B2E),leaf=M(0x2E5B3A,{roughness:1}),wm=M(0x0F1318,{roughness:.9});
+  for(let x=-30;x<=10;x+=10)[7.4,-7.4].forEach(z=>{if(z>0&&x>-12)return;add(new THREE.CylinderGeometry(.08,.12,1.7,8),trunk,[x,.85,z]);add(new THREE.SphereGeometry(.85,14,10),leaf,[x,2.3,z]);add(new THREE.SphereGeometry(.6,12,8),leaf,[x+.4,2.8,z-.25])});
+  // parked cars on the far side
+  [[-26,-3.05,0xB8C0CC],[-9,-3.05,0x4E5A6B]].forEach(([x,z,c])=>{const g=new THREE.Group();g.position.set(x,0,z);S.add(g);add(new THREE.BoxGeometry(4.2,.85,1.8),M(c,{roughness:.4,metalness:.3}),[0,.7,0],null,true,g);add(new THREE.BoxGeometry(2,.7,1.6),M(0x1E2530),[-.2,1.45,0],null,true,g);[[1.4,.4,.9],[1.4,.4,-.9],[-1.4,.4,.9],[-1.4,.4,-.9]].forEach(p=>add(new THREE.CylinderGeometry(.4,.4,.3,14),wm,p,[Math.PI/2,0,0],true,g))});
+  // car
+  const car=new THREE.Group();S.add(car);
+  const body=M(0xE6E9EE,{roughness:.35,metalness:.3});
+  add(new THREE.BoxGeometry(4.4,.9,1.9),body,[0,.75,0],null,true,car);
+  add(new THREE.BoxGeometry(2.2,.75,1.7),M(0x2A3340,{roughness:.2,metalness:.5}),[-.2,1.55,0],null,true,car);
+  const wheel=new THREE.CylinderGeometry(.42,.42,.35,20);
+  [[1.5,.42,.95],[1.5,.42,-.95],[-1.5,.42,.95],[-1.5,.42,-.95]].forEach(p=>add(wheel,wm,p,[Math.PI/2,0,0],true,car));
+  const hl=M(0xFFF6D0,{emissive:0xFFF0B0,emissiveIntensity:1.2});add(new THREE.BoxGeometry(.1,.26,.42),hl,[2.2,.85,.6],null,false,car);add(new THREE.BoxGeometry(.1,.26,.42),hl,[2.2,.85,-.6],null,false,car);
+  const tlm=M(0x5A0F0F,{emissive:0xFF2A2A,emissiveIntensity:0});add(new THREE.BoxGeometry(.1,.26,.5),tlm,[-2.2,.9,.62],null,false,car);add(new THREE.BoxGeometry(.1,.26,.5),tlm,[-2.2,.9,-.62],null,false,car);
+  const brakeLight=new THREE.PointLight(0xFF2A2A,0,6);brakeLight.position.set(-2.6,.9,0);car.add(brakeLight);
+  const head=new THREE.SpotLight(0xFFF2C0,.9,22,.5,.5);head.position.set(2.2,.9,0);head.target.position.set(12,0,0);car.add(head);car.add(head.target);
+  // pedestrians: a small factory so background walkers share the same build
+  const skin=M(0xF1D3B8);
+  function makePed(shirtC,pantsC){const g=new THREE.Group();const shirt=M(shirtC),pants=M(pantsC);
+    add(new THREE.BoxGeometry(.5,.7,.28),shirt,[0,1.25,0],null,true,g);add(new THREE.SphereGeometry(.2,20,16),skin,[0,1.8,0],null,true,g);
+    const lL=new THREE.Group(),lR=new THREE.Group(),aL=new THREE.Group(),aR=new THREE.Group();
+    lL.position.set(0,.9,.13);lR.position.set(0,.9,-.13);aL.position.set(0,1.55,.33);aR.position.set(0,1.55,-.33);
+    add(new THREE.BoxGeometry(.2,.9,.2),pants,[0,-.45,0],null,true,lL);add(new THREE.BoxGeometry(.2,.9,.2),pants,[0,-.45,0],null,true,lR);
+    add(new THREE.BoxGeometry(.14,.62,.14),shirt,[0,-.3,0],null,true,aL);add(new THREE.BoxGeometry(.14,.62,.14),shirt,[0,-.3,0],null,true,aR);
+    g.add(lL,lR,aL,aR);S.add(g);return {g,lL,lR,aL,aR}}
+  const P=makePed(0x5B8DEF,0x2E3A4F),ped=P.g,legL=P.lL,legR=P.lR,armL=P.aL,armR=P.aR;
+  ped.position.set(3.2,0,5.2);ped.rotation.y=-Math.PI/2;
+  // background walkers along the sidewalks (x direction), each with its own speed, phase and range
+  const walkers=[[0xE0704A,0x3B3F4A,-34,-6,5.5,1.1,0],[0x9CC97A,0x2E3A4F,-30,-4,6.3,.9,2],[0xD9B54A,0x444B57,-36,-8,-5.6,1.2,4],[0xA88BD6,0x2E3A4F,-24,-2,-6.4,1.0,1.5],[0x7FC8D8,0x3B3F4A,-14,8,-5.9,.8,3]]
+    .map(([s,p,xa,xb,z,sp,ph])=>{const o=makePed(s,p);o.g.position.set(xa,0,z);return Object.assign(o,{xa,xb,z,sp,ph})});
+  // timeline (seconds)
+  const T=7,tCruise=2.4,tStop=4.6,tPedStop=2.4,tPedBack=3.3,tPedEnd=4.6;
+  const x0=-32,x1=-11.2,v0=(x1-x0)/tCruise,tD=tStop-tCruise,xStop=x1+v0*tD/2,z0=5.2,z1=1.4,z2=5.8;
+  const eo=t=>1-Math.pow(1-t,3),io=t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2;
+  const hudP=document.getElementById("hud-ped"),hudC=document.getElementById("hud-car"),hudT=document.getElementById("hud-ttc");
+  let phaseP="",phaseC="";
+  function frame(t){
+    // car
+    let cx,brk=0,v=v0;
+    if(t<tCruise){cx=x0+v0*t}else if(t<tStop){const tau=t-tCruise;cx=x1+v0*tau-0.5*(v0/tD)*tau*tau;v=v0*(1-tau/tD);brk=1}else{cx=xStop;v=0;brk=1}
+    car.position.x=cx;car.position.z=1.9;tlm.emissiveIntensity=brk*2.2;brakeLight.intensity=brk*1.6;
+    const wr=(cx-x0)*2.4;car.children.forEach(o=>{if(o.geometry===wheel)o.rotation.y=wr});
+    // pedestrian
+    let pz,walking=false,dir=0;
+    if(t<tPedStop){pz=z0+(z1-z0)*(t/tPedStop);walking=true;dir=1}
+    else if(t<tPedBack){pz=z1}
+    else if(t<tPedEnd){pz=z1+(z2-z1)*io((t-tPedBack)/(tPedEnd-tPedBack));walking=true;dir=-1}
+    else pz=z2;
+    ped.position.z=pz;
+    const sw=walking?Math.sin(t*11)*.55:0;legL.rotation.z=sw;legR.rotation.z=-sw;armL.rotation.z=-sw*.8;armR.rotation.z=sw*.8;
+    ped.position.y=walking?Math.abs(Math.sin(t*11))*.04:0;
+    ped.rotation.y=dir>=0?-Math.PI/2:Math.PI/2;
+    // background walkers: ping-pong between xa and xb
+    walkers.forEach(o=>{const L=o.xb-o.xa,tt=(t*o.sp+o.ph)%(2*L/1.4),d=tt*1.4,fwd=d<L;const x=fwd?o.xa+d:o.xb-(d-L);
+      o.g.position.x=x;o.g.rotation.y=fwd?0:Math.PI;const s2=Math.sin(t*10+o.ph*3)*.5;o.lL.rotation.z=s2;o.lR.rotation.z=-s2;o.aL.rotation.z=-s2*.7;o.aR.rotation.z=s2*.7;o.g.position.y=Math.abs(Math.sin(t*10+o.ph*3))*.03});
+    // camera drift
+    cam.position.x=9+Math.sin(t/T*Math.PI*2)*.3;cam.lookAt(-4.5+cx*.12,.4,1.2);
+    // HUD
+    const pp=t<tPedStop?"walks in":t<tPedBack?"stops":t<tPedEnd?"steps back":"safe";
+    const cc=t<tCruise?"constant speed":t<tStop?"brakes · lights on":"stopped";
+    if(pp!==phaseP){hudP.innerHTML="<b>Pedestrian</b> "+pp;phaseP=pp}
+    if(cc!==phaseC){hudC.innerHTML="<b>Car</b> "+cc;phaseC=cc}
+    const ttc=v>0.3?Math.max(0,(3.2-2.2-cx)/v).toFixed(1)+" s":"";hudT.textContent=ttc?"TTC "+ttc:"";
+  }
+  function resize(){const w=box.clientWidth,hh=box.clientHeight;R.setSize(w,hh,false);cam.aspect=w/hh;cam.updateProjectionMatrix()}
+  addEventListener("resize",resize);resize();
+  const t0=performance.now();
+  function loop(){const t=reduce?tStop+.1:((performance.now()-t0)/1000)%T;frame(t);R.render(S,cam);if(!reduce)requestAnimationFrame(loop)}
+  loop();
+})();
+</script>
+</body>
+</html>
