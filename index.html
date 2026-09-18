@@ -602,7 +602,7 @@ lb.addEventListener("click",closeLb);document.addEventListener("keydown",e=>{if(
     // HUD
     const n=st.ttcN;
     if(mode===1){o.hl.textContent=st.post>=0?"impact at half speed":n>1.0?"walking, looking away":n>.83?"perceives and decides":"steps back, too late";o.hr.textContent=st.post>=0?"":st.walk?(st.dir>0?"v = +1.4 m/s":"v = −1.0 m/s"):"v = 0"}
-    if(mode===2){o.hl.textContent=st.post>=0?"collision predicted 0.4 s early":n>1.2?"model: normal walking":n>.83?"risk perceived · fwd/stop/back":"back predicted · fwd/stop/back";o.hr.textContent=st.post>=0?"":(n>1.2?"42 · 20 · 38 %":n>.83?"10 · 55 · 35 %":"2 · 8 · 90 %")}
+    if(mode===2){o.hl.textContent=st.post>=0?"Inevitable collision":n>1.2?"normal walking":n>.83?"risk perceived · fwd/stop/back":"back predicted · fwd/stop/back";o.hr.textContent=st.post>=0?"":(n>1.2?"42 · 20 · 38 %":n>.83?"10 · 55 · 35 %":"2 · 8 · 90 %")}
     if(mode===3){const risk=clamp((2.0-n)/1.5,0,1);o.risk.querySelector("i").style.setProperty("--w",(risk*100).toFixed(0)+"%");o.risk.querySelector("b").textContent=st.post>=0?"impact at "+(vImp*3.6*1.35).toFixed(0)+" km/h, hood already up":"TTC "+Math.max(0,n).toFixed(1)+" s · risk "+(risk*100).toFixed(0)+"%";
       o.hl.textContent=st.post>=0?(st.v>0?"head on raised hood":"stopped"):st.hoodUp?"hood deployed 200 ms early":st.brake?"brakes · lights on":"tracking pedestrian";o.hr.textContent=st.post>=0?"HIC −62%":st.brake?"cannot stop in time":"threshold TTC 0.5 s"}
     boxes[mode-1].classList.toggle("on",mode===1?(n>1.0||t<.6):mode===2?(n<=1.6&&n>.4):(n<=.6));
